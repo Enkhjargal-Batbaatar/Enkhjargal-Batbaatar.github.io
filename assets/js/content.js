@@ -1,14 +1,12 @@
 /*
-  All editable wording for the invitation lives here.
-  To reuse this site for a different couple/event, change the values
-  below only — nothing in index.html, style.css or script.js needs to
-  change.
+  Урилганы бүх бичвэр энд байна.
+  Өөр хурим/өдөр болгож ашиглах бол зөвхөн доорх утгуудыг солиход
+  хангалттай — index.html, style.css, script.js-д гар хүрэх шаардлагагүй.
 
-  Note: the intro video (assets/video/intro.*) has the couple's names
-  painted into its final frames, so coupleFirstName/coupleSecondName
-  below only drive the closing frame and the page title. Changing them
-  here will NOT change the names shown during playback — that needs the
-  video to be re-rendered.
+  Анхаар: танилцуулга видео (assets/video/intro.*) дээрх нэрс нь видеоны
+  пикселд шингэсэн. Доорх coupleFirstName/coupleSecondName нь зөвхөн
+  хаалтын хүрээ болон хуудасны гарчигт нөлөөлнө — видеон дээрх нэрсийг
+  солихын тулд видеог дахин боловсруулах хэрэгтэй.
 */
 const SITE_CONTENT = {
 
@@ -16,67 +14,48 @@ const SITE_CONTENT = {
   coupleSecondName: "Enkhjargal",
 
   intro: {
-    tapHint: "tap anywhere to open",
-    loading: "opening…",
-    skip: "skip ▾"
+    tapHint: "нээхийн тулд дарна уу",
+    loading: "нээж байна…",
+    skip: "алгасах ▾"
   },
 
-  date: {
-    celebrationLine: "in the celebration of their",
-    month: "august",
-    weekday: "saturday",
-    day: "24",
-    time: "at 2:00 pm",
-    year: "20XX",
-    receptionLine: "reception to follow"
+  ceremony: {
+    label: "хуримын ёслол",
+    month: "9 сар",
+    weekday: "даваа",
+    day: "28",
+    time: "12:00 цагт",
+    year: "2026",
+    place: "увс аймаг · тэс сум"
   },
 
-  timeline: {
-    heading: "timeline",
-    items: [
-      { label: "seating begins", time: "1:00" },
-      { label: "ceremony", time: "2:00" },
-      { label: "reception", time: "3:00" },
-      { label: "party time", time: "4:30" },
-      { label: "fireworks", time: "19:30" }
-    ]
-  },
+  timeline: [
+    { label: "зочид хүрэлцэн ирэх", time: "11:30" },
+    { label: "ёслолын ажиллагаа",   time: "12:00" },
+    { label: "хүндэтгэлийн хоол",   time: "13:00" },
+    { label: "хөгжим · бүжиг",      time: "15:00" },
+    { label: "салют",               time: "19:30" }
+  ],
 
   details: {
-    headingSans: "the",
-    headingScript: "details",
-    registry: {
-      title: "registry",
-      items: [
-        { label: "target", symbol: "qr-pattern-a" },
-        { label: "amazon", symbol: "qr-pattern-b" }
-      ]
+    where: {
+      title: "хаана",
+      lines: ["Увс аймаг, Тэс сум"]
     },
-    dressCode: {
-      title: "dress code",
-      label: "formal attire"
+    dress: {
+      title: "хувцаслалт",
+      label: "албан ёсны хувцас"
     },
-    hotel: {
-      title: "recommended hotel",
-      name: "the white pearl hotel miami",
-      lines: ["398 ne 5th street", "miami, fl 33132"]
+    when: {
+      title: "хэзээ",
+      lines: ["2026 оны 9 дүгээр сарын 28", "Даваа гараг · 12:00 цаг"]
     }
   },
 
   rsvp: {
-    please: "please",
-    by: "by july 16, 20xx",
+    by: "2026.09.20-ны дотор",
     email: "eliart@mail.com",
-    note: "please include the names of all guests attending in your rsvp.",
-    form: {
-      namePlaceholder: "full name(s)",
-      attendYes: "joyfully accepts",
-      attendNo: "regretfully declines",
-      guestsPlaceholder: "number of guests",
-      messagePlaceholder: "a note for the couple (optional)",
-      submit: "send rsvp",
-      thanks: "thank you — your rsvp has been noted with love."
-    }
+    note: ["ирэх зочдынхоо нэрсийг", "урьдчилан мэдэгдэнэ үү."]
   }
 
 };
