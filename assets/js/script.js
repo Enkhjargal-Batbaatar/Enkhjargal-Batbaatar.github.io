@@ -41,15 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('placeLine', C.ceremony.place);
 
   setText('whereTitle', C.details.where.title);
-  setText('whereContact', C.details.where.contact);
-  const wherePhones = document.getElementById('wherePhones');
-  if (wherePhones) {
-    wherePhones.replaceChildren(...C.details.where.phones.flatMap((num, i) => {
+  const whereContacts = document.getElementById('whereContacts');
+  if (whereContacts) {
+    whereContacts.replaceChildren(...C.details.where.contacts.map((c) => {
+      const p = document.createElement('p');
+      p.className = 'detail-sub';
       const a = document.createElement('a');
-      a.href = `tel:${num.replace(/\s+/g, '')}`;
+      a.href = `tel:${c.phone.replace(/\s+/g, '')}`;
       a.className = 'detail-phone-link';
-      a.textContent = num;
-      return i === 0 ? [a] : [document.createTextNode(' · '), a];
+      a.textContent = c.phone;
+      p.append(`${c.name} · `, a);
+      return p;
     }));
   }
   setLines('whereAddress', C.details.where.address);
@@ -58,8 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     whereMapLink.href = C.details.where.mapUrl;
     whereMapLink.textContent = C.details.where.mapLabel;
   }
-  setText('dressTitle', C.details.dress.title);
-  setText('dressLabel', C.details.dress.label);
   setText('whenTitle', C.details.when.title);
   setLines('whenLines', C.details.when.lines);
 

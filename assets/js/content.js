@@ -43,15 +43,13 @@ const SITE_CONTENT = {
   details: {
     where: {
       title: "хаана",
-      contact: "Ц. Батбаатар ❤️ Г. Энхжаргал",
-      phones: ["80704117", "80646247"],
+      contacts: [
+        { name: "Ц. Батбаатар", phone: "80704117" },
+        { name: "Г. Энхжаргал", phone: "80646247" }
+      ],
       address: ["Увс аймаг, Тэс сум", "11-р баг, Багын ам"],
       mapUrl: "https://maps.app.goo.gl/DNGjnoJYQu3cudE56",
       mapLabel: "газрын зураг дээр харах"
-    },
-    dress: {
-      title: "хувцаслалт",
-      label: "албан ёсны хувцас"
     },
     when: {
       title: "хэзээ",
