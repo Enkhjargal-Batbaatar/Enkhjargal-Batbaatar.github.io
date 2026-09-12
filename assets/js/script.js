@@ -41,7 +41,24 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('placeLine', C.ceremony.place);
 
   setText('whereTitle', C.details.where.title);
-  setLines('whereLines', C.details.where.lines);
+  setText('whereContact', C.details.where.contact);
+  const wherePhones = document.getElementById('wherePhones');
+  if (wherePhones) {
+    wherePhones.replaceChildren(...C.details.where.phones.flatMap((num, i) => {
+      const a = document.createElement('a');
+      a.href = `tel:${num.replace(/\s+/g, '')}`;
+      a.className = 'detail-phone-link';
+      a.textContent = num;
+      return i === 0 ? [a] : [document.createTextNode(' · '), a];
+    }));
+  }
+  setLines('whereAddress', C.details.where.address);
+  const whereMapLink = document.getElementById('whereMapLink');
+  if (whereMapLink) {
+    const query = encodeURIComponent(C.details.where.address.join(', '));
+    whereMapLink.href = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    whereMapLink.textContent = C.details.where.mapLabel;
+  }
   setText('dressTitle', C.details.dress.title);
   setText('dressLabel', C.details.dress.label);
   setText('whenTitle', C.details.when.title);

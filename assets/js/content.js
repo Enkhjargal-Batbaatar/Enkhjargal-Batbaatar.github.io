@@ -37,13 +37,16 @@ const SITE_CONTENT = {
     time: "12:00",
     timeLabel: "цагт",
     year: "2026",
-    place: "увс аймаг · тэс сум"
+    place: "Two souls, one story, a lifetime of love"
   },
 
   details: {
     where: {
       title: "хаана",
-      lines: ["Увс аймаг, Тэс сум"]
+      contact: "Ц. Батбаатар ❤️ Г. Энхжаргал",
+      phones: ["80704117", "80646247"],
+      address: ["Увс аймаг, Тэс сум", "11-р баг, Багын ам"],
+      mapLabel: "газрын зураг дээр харах"
     },
     dress: {
       title: "хувцаслалт",
@@ -57,7 +60,7 @@ const SITE_CONTENT = {
 
   rsvp: {
     by: "2026.09.20-ны дотор",
-    email: "eliart@mail.com",
+    email: "jaagiijaagii070@gmail.com",
     note: ["ирэх зочдынхоо нэрсийг", "урьдчилан мэдэгдэнэ үү."]
   }
 

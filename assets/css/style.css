@@ -300,10 +300,14 @@ body{
   text-align:center;
 }
 .place-line{
-  font-size:clamp(12.5px, 3.6vw, 15px);
-  letter-spacing:.28em;
-  text-indent:.28em;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(14px, 4vw, 17px);
+  line-height:1.5;
+  color:var(--ink-soft);
   text-align:center;
+  margin:0 auto;
 }
 
 /* a quiet nudge that the page keeps going */
@@ -356,6 +360,26 @@ body{
   letter-spacing:.18em;
   text-transform:uppercase;
 }
+.detail-sub + .detail-sub{margin-top:6px;}
+.detail-phone-link{
+  color:var(--ink-soft);
+  text-decoration:none;
+  border-bottom:1px solid var(--rule);
+}
+.detail-phone-link:hover{color:var(--deep);}
+.detail-map-link{
+  display:inline-block;
+  font-family:var(--display);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-decoration:none;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:2px;
+  margin-top:14px;
+}
+.detail-map-link:hover{color:var(--deep);}
 .hearts{
   display:block;
   width:118px;
