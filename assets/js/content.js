@@ -12,8 +12,8 @@
 */
 const SITE_CONTENT = {
 
-  coupleFirstName: "Батбаатар",
-  coupleSecondName: "Энхжаргал",
+  coupleFirstName: "Batbaatar",
+  coupleSecondName: "Enkhjargal",
 
   intro: {
     tapHint: "tap anywhere to open",
