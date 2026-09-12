@@ -200,6 +200,42 @@ body{
   .tap-ring,.tap-hint{animation:none;}
 }
 
+/* ================= 0. VERSE =================
+   reuses the ornate-frame.webp from the closing page, sized up to be
+   this page's own centerpiece rather than a small accent around a name */
+.verse-panel{padding-left:22px;padding-right:22px;}
+.verse-frame{
+  position:relative;
+  width:clamp(230px, 92vw, 340px);
+}
+.verse-frame > img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.verse-text{
+  position:absolute;
+  left:16%;
+  right:16%;
+  top:23%;
+  bottom:23%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.5em;
+}
+.verse-text p{
+  margin:0;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(12.5px, 3.6vw, 16.5px);
+  line-height:1.55;
+  color:var(--deep);
+}
+.verse-text p:nth-last-child(-n+2){margin-top:.3em;}
+
 /* ================= 1. THE COUPLE + DATE ================= */
 .arch-photo{
   display:block;

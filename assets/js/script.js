@@ -22,6 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('introLoading', C.intro.loading);
   setText('skipHint', C.intro.skip);
 
+  const verseText = document.getElementById('verseText');
+  if (verseText) {
+    verseText.replaceChildren(...C.verse.map((line) => {
+      const p = document.createElement('p');
+      p.textContent = line;
+      return p;
+    }));
+  }
+
   setText('ceremonyLabel', C.ceremony.label);
   setText('dateMonth', C.ceremony.month);
   setText('dateWeekday', C.ceremony.weekday);

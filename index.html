@@ -14,7 +14,8 @@
 <body>
 
 <div class="progress-dots" id="progressDots">
-  <span class="dot active" data-target="photo"></span>
+  <span class="dot active" data-target="verse"></span>
+  <span class="dot" data-target="photo"></span>
   <span class="dot" data-target="timeline"></span>
   <span class="dot" data-target="details"></span>
   <span class="dot" data-target="rsvp"></span>
@@ -45,6 +46,14 @@
 </div>
 
 <main class="scroller" id="scroller">
+
+  <!-- 0. VERSE — reuses the closing page's ornate frame, sized up -->
+  <section class="panel verse-panel" id="verse">
+    <div class="reveal verse-frame">
+      <img src="assets/img/ornate-frame.webp" alt="" width="620" height="872">
+      <div class="verse-text" id="verseText"></div>
+    </div>
+  </section>
 
   <!-- 1. THE COUPLE + CEREMONY DATE -->
   <section class="panel" id="photo">
