@@ -13,6 +13,7 @@
 
 <div class="progress-dots" id="progressDots">
   <span class="dot active" data-target="cover"></span>
+  <span class="dot" data-target="invited"></span>
   <span class="dot" data-target="hero"></span>
   <span class="dot" data-target="photo"></span>
   <span class="dot" data-target="timeline"></span>
@@ -25,28 +26,12 @@
 
   <!-- 1. ENVELOPE / COVER -->
   <section class="panel cover" id="cover">
-    <div class="paper-edge"></div>
-    <div class="envelope">
-      <svg class="envelope-flap" viewBox="0 0 300 300" preserveAspectRatio="none">
-        <path d="M0,0 L300,0 L150,150 Z" fill="url(#foldGrad)"/>
-        <path d="M0,0 L150,150 L0,300 Z" fill="url(#foldGrad2)"/>
-        <path d="M300,0 L150,150 L300,300 Z" fill="url(#foldGrad2)"/>
-        <path d="M0,300 L150,150 L300,300 Z" fill="url(#foldGrad3)"/>
-        <defs>
-          <linearGradient id="foldGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#f7f2ea"/>
-            <stop offset="1" stop-color="#ede3d4"/>
-          </linearGradient>
-          <linearGradient id="foldGrad2" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#f2ece1"/>
-            <stop offset="1" stop-color="#e6dac8"/>
-          </linearGradient>
-          <linearGradient id="foldGrad3" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#efe6d7"/>
-            <stop offset="1" stop-color="#e2d5c1"/>
-          </linearGradient>
-        </defs>
-      </svg>
+    <div class="envelope" id="envelope">
+      <div class="flap flap-back"></div>
+      <div class="flap flap-left"></div>
+      <div class="flap flap-right"></div>
+      <div class="flap flap-top"></div>
+      <div class="flap flap-bottom"></div>
 
       <div class="floral-corner tl"><svg viewBox="0 0 120 120"><use href="#floral-emboss"/></svg></div>
       <div class="floral-corner tr"><svg viewBox="0 0 120 120"><use href="#floral-emboss"/></svg></div>
@@ -75,18 +60,26 @@
     </div>
   </section>
 
-  <!-- 2. HERO -->
+  <!-- 2. YOU'RE CORDIALLY INVITED -->
+  <section class="panel invited-panel" id="invited">
+    <div class="flutter-wrap" id="flutterButterfly">
+      <svg viewBox="0 0 200 140" class="butterfly-art flutter-inner"><use href="#butterfly-full"/></svg>
+    </div>
+    <p class="reveal invited-line" id="invitedLine" style="--d:1"></p>
+  </section>
+
+  <!-- 3. HERO -->
   <section class="panel hero" id="hero">
     <div class="reveal butterfly-hero">
       <svg viewBox="0 0 200 140" class="butterfly-art">
         <use href="#butterfly-full"/>
       </svg>
     </div>
-    <p class="reveal eyebrow" style="--d:1">we're getting<br>married</p>
+    <p class="reveal eyebrow" style="--d:1" id="heroEyebrow"></p>
     <h1 class="reveal script-names" style="--d:2">
-      <span>Adele</span>
+      <span id="heroNameA"></span>
       <span class="amp">&amp;</span>
-      <span>Oliver</span>
+      <span id="heroNameB"></span>
     </h1>
   </section>
 
@@ -126,15 +119,15 @@
       </div>
     </div>
 
-    <p class="reveal caption-line" style="--d:1">in the celebration of their</p>
+    <p class="reveal caption-line" style="--d:1" id="celebrationLine"></p>
 
     <div class="reveal date-block" style="--d:2">
-      <p class="month">august</p>
-      <p class="day-row"><span>saturday</span><span class="day-num">24</span><span>at 2:00 pm</span></p>
-      <p class="year">20XX</p>
+      <p class="month" id="dateMonth"></p>
+      <p class="day-row"><span id="dateWeekday"></span><span class="day-num" id="dateDay"></span><span id="dateTime"></span></p>
+      <p class="year" id="dateYear"></p>
     </div>
 
-    <p class="reveal reception-line" style="--d:3">reception to follow</p>
+    <p class="reveal reception-line" style="--d:3" id="receptionLine"></p>
   </section>
 
   <!-- 4. TIMELINE -->
@@ -142,48 +135,36 @@
     <div class="reveal floral-divider">
       <svg viewBox="0 0 220 90" class="floral-bouquet"><use href="#floral-bouquet-art"/></svg>
     </div>
-    <h2 class="reveal script-heading" style="--d:1">timeline</h2>
+    <h2 class="reveal script-heading" style="--d:1" id="timelineHeading"></h2>
 
-    <ul class="reveal timeline-list" style="--d:2">
-      <li><span class="tl-label">seating begins</span><span class="tl-time">1:00</span></li>
-      <li><span class="tl-label">ceremony</span><span class="tl-time">2:00</span></li>
-      <li><span class="tl-label">reception</span><span class="tl-time">3:00</span></li>
-      <li><span class="tl-label">party time</span><span class="tl-time">4:30</span></li>
-      <li><span class="tl-label">fireworks</span><span class="tl-time">19:30</span></li>
-    </ul>
+    <ul class="reveal timeline-list" style="--d:2" id="timelineList"></ul>
   </section>
 
   <!-- 5. DETAILS -->
   <section class="panel rose-bg" id="details">
-    <h2 class="reveal details-heading"><span class="sans">the</span><span class="script">details</span></h2>
+    <h2 class="reveal details-heading">
+      <span class="sans" id="detailsHeadingSans"></span>
+      <span class="script" id="detailsHeadingScript"></span>
+    </h2>
 
     <div class="reveal detail-block" style="--d:1">
-      <h3 class="detail-title">registry</h3>
-      <div class="qr-row">
-        <div class="qr-item">
-          <svg viewBox="0 0 100 100" class="qr-code"><use href="#qr-pattern-a"/></svg>
-          <span>target</span>
-        </div>
-        <div class="qr-item">
-          <svg viewBox="0 0 100 100" class="qr-code"><use href="#qr-pattern-b"/></svg>
-          <span>amazon</span>
-        </div>
-      </div>
+      <h3 class="detail-title" id="registryTitle"></h3>
+      <div class="qr-row" id="registryRow"></div>
     </div>
 
     <div class="reveal detail-block" style="--d:2">
-      <h3 class="detail-title">dress code</h3>
+      <h3 class="detail-title" id="dressCodeTitle"></h3>
       <div class="hearts-row">
         <svg viewBox="0 0 40 36" class="heart heart-1"><use href="#heart-shape"/></svg>
         <svg viewBox="0 0 40 36" class="heart heart-2"><use href="#heart-shape"/></svg>
         <svg viewBox="0 0 40 36" class="heart heart-3"><use href="#heart-shape"/></svg>
       </div>
-      <p class="detail-sub">formal attire</p>
+      <p class="detail-sub" id="dressCodeLabel"></p>
     </div>
 
     <div class="reveal detail-block" style="--d:3">
-      <h3 class="detail-title">recommended hotel</h3>
-      <p class="detail-sub multiline">the white pearl hotel miami<br>398 ne 5th street<br>miami, fl 33132</p>
+      <h3 class="detail-title" id="hotelTitle"></h3>
+      <p class="detail-sub multiline" id="hotelLines"></p>
     </div>
   </section>
 
@@ -192,33 +173,34 @@
     <div class="leaf-branch leaf-tl"><svg viewBox="0 0 140 140"><use href="#leaf-branch-art"/></svg></div>
     <div class="leaf-branch leaf-br"><svg viewBox="0 0 140 140"><use href="#leaf-branch-art"/></svg></div>
 
-    <p class="reveal please-script">please</p>
+    <p class="reveal please-script" id="rsvpPlease"></p>
     <h2 class="reveal rsvp-title" style="--d:1">R S<br>V P</h2>
-    <p class="reveal rsvp-by" style="--d:2">by july 16, 20xx</p>
-    <p class="reveal rsvp-email" style="--d:2">eliart@mail.com</p>
-    <p class="reveal rsvp-note" style="--d:3">please include the names of all guests attending in your rsvp.</p>
+    <p class="reveal rsvp-by" style="--d:2" id="rsvpBy"></p>
+    <p class="reveal rsvp-email" style="--d:2" id="rsvpEmail"></p>
+    <p class="reveal rsvp-note" style="--d:3" id="rsvpNote"></p>
 
     <form class="reveal rsvp-form" id="rsvpForm" style="--d:4">
-      <input type="text" name="guestName" placeholder="full name(s)" required>
+      <input type="text" name="guestName" id="rsvpNameInput" required>
       <div class="attend-row">
-        <label><input type="radio" name="attending" value="joyfully accepts" checked> joyfully accepts</label>
-        <label><input type="radio" name="attending" value="regretfully declines"> regretfully declines</label>
+        <label><input type="radio" name="attending" id="rsvpAttendYes" checked> <span id="rsvpAttendYesLabel"></span></label>
+        <label><input type="radio" name="attending" id="rsvpAttendNo"> <span id="rsvpAttendNoLabel"></span></label>
       </div>
-      <input type="number" name="guestCount" min="1" max="10" placeholder="number of guests">
-      <textarea name="message" placeholder="a note for the couple (optional)" rows="2"></textarea>
-      <button type="submit">send rsvp</button>
+      <input type="number" name="guestCount" min="1" max="10" id="rsvpGuestsInput">
+      <textarea name="message" id="rsvpMessageInput" rows="2"></textarea>
+      <button type="submit" id="rsvpSubmitBtn"></button>
     </form>
-    <p class="rsvp-thanks" id="rsvpThanks">thank you — your rsvp has been noted with love.</p>
+    <p class="rsvp-thanks" id="rsvpThanks"></p>
   </section>
 
   <!-- 7. CLOSING -->
   <section class="panel cover" id="closing">
     <div class="reveal ornate-frame">
       <svg viewBox="0 0 260 360" class="ornate-svg"><use href="#ornate-frame-art"/></svg>
+      <div class="frame-shine"></div>
       <div class="ornate-names">
-        <span>Adele</span>
+        <span id="closingNameA"></span>
         <span class="amp">&amp;</span>
-        <span>Oliver</span>
+        <span id="closingNameB"></span>
       </div>
     </div>
   </section>
@@ -387,6 +369,7 @@
   </defs>
 </svg>
 
+<script src="assets/js/content.js"></script>
 <script src="assets/js/script.js"></script>
 </body>
 </html>
