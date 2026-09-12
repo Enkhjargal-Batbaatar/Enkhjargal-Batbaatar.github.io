@@ -55,8 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setLines('whereAddress', C.details.where.address);
   const whereMapLink = document.getElementById('whereMapLink');
   if (whereMapLink) {
-    const query = encodeURIComponent(C.details.where.address.join(', '));
-    whereMapLink.href = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    whereMapLink.href = C.details.where.mapUrl;
     whereMapLink.textContent = C.details.where.mapLabel;
   }
   setText('dressTitle', C.details.dress.title);
