@@ -1,61 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="gate-open">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adele &amp; Oliver | We're Getting Married</title>
+<title>Батбаатар &amp; Энхжаргал | We're Getting Married</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;500;600&family=Alex+Brush&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bad+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <div class="progress-dots" id="progressDots">
-  <span class="dot active" data-target="intro"></span>
-  <span class="dot" data-target="photo"></span>
+  <span class="dot active" data-target="photo"></span>
   <span class="dot" data-target="timeline"></span>
   <span class="dot" data-target="details"></span>
   <span class="dot" data-target="rsvp"></span>
   <span class="dot" data-target="closing"></span>
 </div>
 
+<!-- ============ 1. INTRO GATE (tap anywhere -> video + sound) ============ -->
+<div class="intro-gate" id="introGate">
+  <video
+    id="introVideo"
+    class="intro-video"
+    poster="assets/video/poster.jpg"
+    playsinline
+    webkit-playsinline
+    preload="auto"
+  >
+    <source src="assets/video/intro.webm" type="video/webm">
+    <source src="assets/video/intro.mp4" type="video/mp4">
+  </video>
+
+  <button class="intro-tap-layer" id="introTap" type="button">
+    <span class="tap-ring"></span>
+    <span class="tap-hint" id="tapHint"></span>
+  </button>
+
+  <p class="intro-loading" id="introLoading"></p>
+  <button class="skip-hint" id="skipHint" type="button"></button>
+</div>
+
 <main class="scroller" id="scroller">
-
-  <!-- 1. INTRO (actual video: envelope open -> cordially invited -> hero names) -->
-  <section class="panel intro-panel" id="intro">
-    <video
-      id="introVideo"
-      class="intro-video"
-      poster="assets/video/poster.jpg"
-      playsinline
-      preload="metadata"
-    >
-      <source src="assets/video/intro.webm" type="video/webm">
-      <source src="assets/video/intro.mp4" type="video/mp4">
-    </video>
-
-    <button class="wax-seal intro-tap" id="waxSeal" aria-label="Open invitation">
-      <svg viewBox="0 0 160 160">
-        <circle cx="80" cy="80" r="70" fill="url(#sealGrad)" />
-        <circle cx="80" cy="80" r="70" fill="none" stroke="#d8c8a8" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>
-        <circle cx="80" cy="80" r="58" fill="none" stroke="#c9b48c" stroke-width="1"/>
-        <g fill="none" stroke="#8a7350" stroke-width="1.1" stroke-linecap="round">
-          <use href="#butterfly-line" x="80" y="80" transform="translate(80 80) scale(0.62) translate(-80 -80)"/>
-        </g>
-        <defs>
-          <radialGradient id="sealGrad" cx="35%" cy="30%" r="80%">
-            <stop offset="0" stop-color="#fbf6ea"/>
-            <stop offset="55%" stop-color="#f0e5cd"/>
-            <stop offset="100%" stop-color="#dcc9a4"/>
-          </radialGradient>
-        </defs>
-      </svg>
-    </button>
-
-    <p class="tap-hint intro-tap" id="tapHint">tap the seal to open</p>
-    <p class="skip-hint" id="skipHint">skip ▾</p>
-  </section>
 
   <!-- 3. PHOTO + SAVE THE DATE -->
   <section class="panel photo-panel" id="photo">
@@ -184,18 +171,6 @@
 <!-- ============ SVG SYMBOL LIBRARY ============ -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
-
-    <symbol id="butterfly-line" viewBox="0 0 160 160">
-      <g transform="translate(80,80)">
-        <path d="M0,-6 C-8,-30 -34,-42 -48,-30 C-58,-20 -50,0 -28,6 C-14,10 -4,4 0,-6 Z"/>
-        <path d="M0,-6 C8,-30 34,-42 48,-30 C58,-20 50,0 28,6 C14,10 4,4 0,-6 Z"/>
-        <path d="M0,4 C-6,16 -24,26 -34,18 C-42,11 -36,-2 -20,-2 C-10,-2 -3,0 0,4 Z"/>
-        <path d="M0,4 C6,16 24,26 34,18 C42,11 36,-2 20,-2 C10,-2 3,0 0,4 Z"/>
-        <line x1="0" y1="-10" x2="0" y2="12"/>
-        <path d="M0,-10 C-3,-16 -9,-18 -12,-16"/>
-        <path d="M0,-10 C3,-16 9,-18 12,-16"/>
-      </g>
-    </symbol>
 
     <symbol id="floral-bouquet-art" viewBox="0 0 220 90">
       <g fill="none" stroke-linecap="round">

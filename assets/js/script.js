@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.title = `${C.coupleFirstName} & ${C.coupleSecondName} | We're Getting Married`;
 
+  setText('tapHint', C.intro.tapHint);
+  setText('introLoading', C.intro.loading);
+  setText('skipHint', C.intro.skip);
+
   setText('closingNameA', C.coupleFirstName);
   setText('closingNameB', C.coupleSecondName);
 
@@ -101,35 +105,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ================= intro video (envelope open -> invited -> hero) =================
-  const introPanel = document.getElementById('intro');
+  // ================= intro gate (tap anywhere -> video with sound) =================
+  const introGate = document.getElementById('introGate');
   const introVideo = document.getElementById('introVideo');
-  const waxSeal = document.getElementById('waxSeal');
+  const introTap = document.getElementById('introTap');
   const skipHint = document.getElementById('skipHint');
-  const photoPanel = document.getElementById('photo');
 
-  function goToPhoto() {
-    if (photoPanel) photoPanel.scrollIntoView({ behavior: 'smooth' });
+  let introOpened = false;
+  let introClosed = false;
+
+  function closeIntro() {
+    if (introClosed) return;
+    introClosed = true;
+    introGate.classList.add('done');
+    document.documentElement.classList.remove('gate-open');
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+      introGate.classList.add('gone');
+      introVideo.pause();
+    }, 950);
   }
 
-  function playIntro() {
-    if (!introVideo || introPanel.classList.contains('playing')) return;
-    introPanel.classList.add('playing');
-    introVideo.play().catch(() => {
-      // autoplay with sound was blocked — retry muted so playback still runs
-      introVideo.muted = true;
-      introVideo.play();
-    });
+  function openIntro() {
+    if (introOpened) return;
+    introOpened = true;
+    introGate.classList.add('playing', 'buffering');
+    introVideo.muted = false;
+    introVideo.volume = 1;
+    const started = introVideo.play();
+    if (started && started.catch) {
+      started.catch(() => {
+        // sound was refused (rare after a real tap) — run it silently rather than not at all
+        introVideo.muted = true;
+        introVideo.play().catch(closeIntro);
+      });
+    }
   }
 
-  if (waxSeal) waxSeal.addEventListener('click', playIntro);
-  if (introVideo) {
-    introVideo.addEventListener('ended', goToPhoto);
-    introVideo.addEventListener('click', () => {
-      if (introVideo.paused) playIntro();
-    });
+  if (introGate && introVideo) {
+    introTap.addEventListener('click', openIntro);
+    skipHint.addEventListener('click', closeIntro);
+    introVideo.addEventListener('playing', () => introGate.classList.remove('buffering'));
+    introVideo.addEventListener('waiting', () => introGate.classList.add('buffering'));
+    introVideo.addEventListener('ended', closeIntro);
+    introVideo.addEventListener('error', closeIntro);
+  } else {
+    document.documentElement.classList.remove('gate-open');
   }
-  if (skipHint) skipHint.addEventListener('click', goToPhoto);
 
   // ================= RSVP form (client-side only) =================
   const rsvpForm = document.getElementById('rsvpForm');

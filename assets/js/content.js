@@ -4,17 +4,22 @@
   below only — nothing in index.html, style.css or script.js needs to
   change.
 
-  Note: the intro (envelope opening, "you're cordially invited", and the
-  "Adele & Oliver" hero names) is the actual source video
-  (assets/video/intro.mp4), so that text is baked into the video pixels.
-  coupleFirstName/coupleSecondName below only drive the closing frame and
-  the page title — a different intro video is needed to change the names
-  shown during playback.
+  Note: the intro video (assets/video/intro.*) has the couple's names
+  painted into its final frames, so coupleFirstName/coupleSecondName
+  below only drive the closing frame and the page title. Changing them
+  here will NOT change the names shown during playback — that needs the
+  video to be re-rendered.
 */
 const SITE_CONTENT = {
 
-  coupleFirstName: "Adele",
-  coupleSecondName: "Oliver",
+  coupleFirstName: "Батбаатар",
+  coupleSecondName: "Энхжаргал",
+
+  intro: {
+    tapHint: "tap anywhere to open",
+    loading: "opening…",
+    skip: "skip ▾"
+  },
 
   date: {
     celebrationLine: "in the celebration of their",
