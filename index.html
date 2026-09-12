@@ -16,7 +16,6 @@
 <div class="progress-dots" id="progressDots">
   <span class="dot active" data-target="verse"></span>
   <span class="dot" data-target="photo"></span>
-  <span class="dot" data-target="details"></span>
   <span class="dot" data-target="rsvp"></span>
   <span class="dot" data-target="closing"></span>
 </div>
@@ -78,9 +77,10 @@
     <span class="scroll-cue" aria-hidden="true"></span>
   </section>
 
-  <!-- 3. DETAILS -->
-  <section class="panel" id="details">
-    <img class="reveal title-img title-details" src="assets/img/details-title.webp" alt="The details" width="440" height="299">
+  <!-- 3. DETAILS + RSVP -->
+  <section class="panel rsvp-panel" id="rsvp">
+    <img class="branch branch-a" src="assets/img/branch-a.webp" alt="" width="380" height="479">
+    <img class="branch branch-b" src="assets/img/branch-b.webp" alt="" width="300" height="552">
 
     <div class="reveal detail-block" style="--d:1">
       <h3 class="detail-title" id="whereTitle"></h3>
@@ -100,17 +100,11 @@
       <h3 class="detail-title" id="whenTitle"></h3>
       <p class="detail-sub" id="whenLines"></p>
     </div>
-  </section>
 
-  <!-- 4. RSVP -->
-  <section class="panel rsvp-panel" id="rsvp">
-    <img class="branch branch-a" src="assets/img/branch-a.webp" alt="" width="380" height="479">
-    <img class="branch branch-b" src="assets/img/branch-b.webp" alt="" width="300" height="552">
-
-    <img class="reveal rsvp-title" src="assets/img/rsvp-title.webp" alt="Please RSVP" width="460" height="499">
-    <p class="reveal rsvp-by" style="--d:1" id="rsvpBy"></p>
-    <a class="reveal rsvp-email" style="--d:2" id="rsvpEmail" href="#"></a>
-    <p class="reveal rsvp-note" style="--d:3" id="rsvpNote"></p>
+    <img class="reveal rsvp-title" style="--d:4" src="assets/img/rsvp-title.webp" alt="Please RSVP" width="460" height="499">
+    <p class="reveal rsvp-by" style="--d:5" id="rsvpBy"></p>
+    <a class="reveal rsvp-email" style="--d:5" id="rsvpEmail" href="#"></a>
+    <p class="reveal rsvp-note" style="--d:6" id="rsvpNote"></p>
   </section>
 
   <!-- 5. CLOSING -->

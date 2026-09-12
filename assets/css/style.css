@@ -75,11 +75,6 @@ body{
   line-height:2.2;
   margin:0;
 }
-.title-img{
-  display:block;
-  height:auto;
-  opacity:.92;
-}
 
 /* ================= INTRO GATE (full screen, tap anywhere) ================= */
 .intro-gate{
@@ -326,9 +321,7 @@ body{
   50%{opacity:.9;transform:translateY(0);}
 }
 
-/* ================= 2. DETAILS ================= */
-.title-details{width:min(46%,168px);margin-bottom:10px;}
-
+/* ================= 2. DETAILS + RSVP ================= */
 .detail-block{margin:20px 0;width:100%;}
 .detail-title{
   font-family:var(--display);
@@ -387,7 +380,6 @@ body{
   margin:2px auto 10px;
 }
 
-/* ================= 3. RSVP ================= */
 .rsvp-panel{overflow:hidden;}
 .branch{
   position:absolute;
@@ -402,6 +394,7 @@ body{
   display:block;
   width:min(52%,192px);
   height:auto;
+  margin:34px auto 0;
 }
 .rsvp-by{
   font-size:16px;
@@ -431,7 +424,7 @@ body{
   margin:42px 0 0;
 }
 
-/* ================= 4. CLOSING ================= */
+/* ================= 3. CLOSING ================= */
 .ornate-frame{
   position:relative;
   width:min(80%,300px);
