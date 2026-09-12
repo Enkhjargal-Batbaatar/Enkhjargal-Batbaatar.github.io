@@ -3,19 +3,18 @@
   To reuse this site for a different couple/event, change the values
   below only — nothing in index.html, style.css or script.js needs to
   change.
+
+  Note: the intro (envelope opening, "you're cordially invited", and the
+  "Adele & Oliver" hero names) is the actual source video
+  (assets/video/intro.mp4), so that text is baked into the video pixels.
+  coupleFirstName/coupleSecondName below only drive the closing frame and
+  the page title — a different intro video is needed to change the names
+  shown during playback.
 */
 const SITE_CONTENT = {
 
   coupleFirstName: "Adele",
   coupleSecondName: "Oliver",
-
-  invited: {
-    line: "you're cordially invited"
-  },
-
-  hero: {
-    eyebrow: "we're getting\nmarried"
-  },
 
   date: {
     celebrationLine: "in the celebration of their",

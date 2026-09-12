@@ -9,12 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.title = `${C.coupleFirstName} & ${C.coupleSecondName} | We're Getting Married`;
 
-  setText('invitedLine', C.invited.line);
-
-  const eyebrowEl = document.getElementById('heroEyebrow');
-  if (eyebrowEl) eyebrowEl.innerHTML = C.hero.eyebrow.split('\n').join('<br>');
-  setText('heroNameA', C.coupleFirstName);
-  setText('heroNameB', C.coupleSecondName);
   setText('closingNameA', C.coupleFirstName);
   setText('closingNameB', C.coupleSecondName);
 
@@ -107,29 +101,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ================= envelope open -> invited -> hero =================
+  // ================= intro video (envelope open -> invited -> hero) =================
+  const introPanel = document.getElementById('intro');
+  const introVideo = document.getElementById('introVideo');
   const waxSeal = document.getElementById('waxSeal');
-  const envelope = document.getElementById('envelope');
-  const invitedPanel = document.getElementById('invited');
-  const flutterButterfly = document.getElementById('flutterButterfly');
+  const skipHint = document.getElementById('skipHint');
+  const photoPanel = document.getElementById('photo');
 
-  if (waxSeal && envelope) {
-    waxSeal.addEventListener('click', () => {
-      if (envelope.classList.contains('opened')) return;
-      envelope.classList.add('opened');
+  function goToPhoto() {
+    if (photoPanel) photoPanel.scrollIntoView({ behavior: 'smooth' });
+  }
 
-      setTimeout(() => {
-        invitedPanel.scrollIntoView({ behavior: 'smooth' });
-        if (flutterButterfly) flutterButterfly.classList.add('flutter-play');
-        setTimeout(() => {
-          document.getElementById('invitedLine').classList.add('in-view');
-        }, 900);
-        setTimeout(() => {
-          document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
-        }, 2600);
-      }, 950);
+  function playIntro() {
+    if (!introVideo || introPanel.classList.contains('playing')) return;
+    introPanel.classList.add('playing');
+    introVideo.play().catch(() => {
+      // autoplay with sound was blocked — retry muted so playback still runs
+      introVideo.muted = true;
+      introVideo.play();
     });
   }
+
+  if (waxSeal) waxSeal.addEventListener('click', playIntro);
+  if (introVideo) {
+    introVideo.addEventListener('ended', goToPhoto);
+    introVideo.addEventListener('click', () => {
+      if (introVideo.paused) playIntro();
+    });
+  }
+  if (skipHint) skipHint.addEventListener('click', goToPhoto);
 
   // ================= RSVP form (client-side only) =================
   const rsvpForm = document.getElementById('rsvpForm');
