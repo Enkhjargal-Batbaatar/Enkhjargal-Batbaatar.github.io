@@ -16,7 +16,6 @@
 <div class="progress-dots" id="progressDots">
   <span class="dot active" data-target="verse"></span>
   <span class="dot" data-target="photo"></span>
-  <span class="dot" data-target="timeline"></span>
   <span class="dot" data-target="details"></span>
   <span class="dot" data-target="rsvp"></span>
   <span class="dot" data-target="closing"></span>
@@ -47,12 +46,10 @@
 
 <main class="scroller" id="scroller">
 
-  <!-- 0. VERSE — reuses the closing page's ornate frame, sized up -->
-  <section class="panel verse-panel" id="verse">
-    <div class="reveal verse-frame">
-      <img src="assets/img/ornate-frame.webp" alt="" width="620" height="872">
-      <div class="verse-text" id="verseText"></div>
-    </div>
+  <!-- 0. VERSE -->
+  <section class="panel" id="verse">
+    <img class="reveal posy" src="assets/img/posy.webp" alt="" width="620" height="254">
+    <div class="reveal verse-text" style="--d:1" id="verseText"></div>
   </section>
 
   <!-- 1. THE COUPLE + CEREMONY DATE -->
@@ -79,13 +76,6 @@
     <p class="reveal caps place-line" style="--d:3" id="placeLine"></p>
 
     <span class="scroll-cue" aria-hidden="true"></span>
-  </section>
-
-  <!-- 2. TIMELINE -->
-  <section class="panel" id="timeline">
-    <img class="reveal posy" src="assets/img/posy.webp" alt="" width="620" height="254">
-    <img class="reveal title-img title-timeline" style="--d:1" src="assets/img/timeline-title.webp" alt="Timeline" width="520" height="178">
-    <ul class="reveal timeline-list" style="--d:2" id="timelineList"></ul>
   </section>
 
   <!-- 3. DETAILS -->

@@ -40,21 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('dateYear', C.ceremony.year);
   setText('placeLine', C.ceremony.place);
 
-  const timelineList = document.getElementById('timelineList');
-  if (timelineList) {
-    timelineList.replaceChildren(...C.timeline.map((item) => {
-      const li = document.createElement('li');
-      const what = document.createElement('p');
-      what.className = 'tl-label';
-      what.textContent = item.label;
-      const when = document.createElement('p');
-      when.className = 'tl-time';
-      when.textContent = item.time;
-      li.append(what, when);
-      return li;
-    }));
-  }
-
   setText('whereTitle', C.details.where.title);
   setLines('whereLines', C.details.where.lines);
   setText('dressTitle', C.details.dress.title);

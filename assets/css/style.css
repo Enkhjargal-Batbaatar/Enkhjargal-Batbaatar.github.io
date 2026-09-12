@@ -200,38 +200,27 @@ body{
   .tap-ring,.tap-hint{animation:none;}
 }
 
-/* ================= 0. VERSE =================
-   reuses the ornate-frame.webp from the closing page, sized up to be
-   this page's own centerpiece rather than a small accent around a name */
-.verse-panel{padding-left:22px;padding-right:22px;}
-.verse-frame{
-  position:relative;
-  width:clamp(230px, 92vw, 340px);
-}
-.verse-frame > img{
+/* ================= 0. VERSE ================= */
+.posy{
   display:block;
-  width:100%;
+  width:min(70%,262px);
   height:auto;
+  margin-bottom:22px;
 }
 .verse-text{
-  position:absolute;
-  left:16%;
-  right:16%;
-  top:23%;
-  bottom:23%;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  gap:.5em;
+  gap:.7em;
+  max-width:300px;
 }
 .verse-text p{
   margin:0;
   font-family:var(--serif);
   font-style:italic;
   font-weight:500;
-  font-size:clamp(12.5px, 3.6vw, 16.5px);
-  line-height:1.55;
+  font-size:clamp(15px, 4.4vw, 19px);
+  line-height:1.6;
   color:var(--deep);
 }
 .verse-text p:nth-last-child(-n+2){margin-top:.3em;}
@@ -333,41 +322,7 @@ body{
   50%{opacity:.9;transform:translateY(0);}
 }
 
-/* ================= 2. TIMELINE ================= */
-.posy{
-  display:block;
-  width:min(70%,262px);
-  height:auto;
-  margin-bottom:2px;
-}
-.title-timeline{width:min(52%,186px);margin-bottom:6px;}
-
-.timeline-list{
-  list-style:none;
-  padding:0;
-  margin:18px 0 0;
-  width:100%;
-  max-width:248px;
-}
-.timeline-list li{padding:13px 0;}
-.timeline-list li + li{border-top:1px solid rgba(150,128,106,.24);}
-.tl-label{
-  font-family:var(--display);
-  font-size:10.5px;
-  letter-spacing:.3em;
-  text-indent:.3em;
-  text-transform:uppercase;
-  color:var(--deep);
-  margin:0;
-}
-.tl-time{
-  font-size:17px;
-  font-weight:500;
-  color:var(--ink);
-  margin:4px 0 0;
-}
-
-/* ================= 3. DETAILS ================= */
+/* ================= 2. DETAILS ================= */
 .title-details{width:min(46%,168px);margin-bottom:10px;}
 
 .detail-block{margin:20px 0;width:100%;}
@@ -408,7 +363,7 @@ body{
   margin:2px auto 10px;
 }
 
-/* ================= 4. RSVP ================= */
+/* ================= 3. RSVP ================= */
 .rsvp-panel{overflow:hidden;}
 .branch{
   position:absolute;
@@ -452,7 +407,7 @@ body{
   margin:42px 0 0;
 }
 
-/* ================= 5. CLOSING ================= */
+/* ================= 4. CLOSING ================= */
 .ornate-frame{
   position:relative;
   width:min(80%,300px);

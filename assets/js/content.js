@@ -40,14 +40,6 @@ const SITE_CONTENT = {
     place: "увс аймаг · тэс сум"
   },
 
-  timeline: [
-    { label: "зочид хүрэлцэн ирэх", time: "11:30" },
-    { label: "ёслолын ажиллагаа",   time: "12:00" },
-    { label: "хүндэтгэлийн хоол",   time: "13:00" },
-    { label: "хөгжим · бүжиг",      time: "15:00" },
-    { label: "салют",               time: "19:30" }
-  ],
-
   details: {
     where: {
       title: "хаана",
