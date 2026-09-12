@@ -53,12 +53,17 @@
     <p class="reveal caps ceremony-label" style="--d:1" id="ceremonyLabel"></p>
 
     <div class="reveal date-block" style="--d:2">
-      <p class="month" id="dateMonth"></p>
-      <p class="day-row">
-        <span id="dateWeekday"></span>
-        <span class="day-num" id="dateDay"></span>
-        <span id="dateTime"></span>
-      </p>
+      <div class="day-row">
+        <span class="weekday" id="dateWeekday"></span>
+        <span class="date-col">
+          <span class="month" id="dateMonth"></span>
+          <span class="day-num" id="dateDay"></span>
+        </span>
+        <span class="time-col">
+          <span class="time-value" id="dateTime"></span>
+          <span class="time-label" id="dateTimeLabel"></span>
+        </span>
+      </div>
       <p class="year" id="dateYear"></p>
     </div>
 

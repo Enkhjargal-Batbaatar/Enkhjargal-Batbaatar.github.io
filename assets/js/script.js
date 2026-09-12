@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('dateWeekday', C.ceremony.weekday);
   setText('dateDay', C.ceremony.day);
   setText('dateTime', C.ceremony.time);
+  setText('dateTimeLabel', C.ceremony.timeLabel);
   setText('dateYear', C.ceremony.year);
   setText('placeLine', C.ceremony.place);
 

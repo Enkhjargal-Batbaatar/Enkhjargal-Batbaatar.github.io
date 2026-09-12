@@ -24,7 +24,8 @@ const SITE_CONTENT = {
     month: "9 сар",
     weekday: "даваа",
     day: "28",
-    time: "12:00 цагт",
+    time: "12:00",
+    timeLabel: "цагт",
     year: "2026",
     place: "увс аймаг · тэс сум"
   },
