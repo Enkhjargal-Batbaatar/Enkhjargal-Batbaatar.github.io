@@ -22,10 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('introLoading', C.intro.loading);
   setText('skipHint', C.intro.skip);
 
+  // each line reveals on its own, one after another down the verse
   const verseText = document.getElementById('verseText');
   if (verseText) {
-    verseText.replaceChildren(...C.verse.map((line) => {
+    verseText.replaceChildren(...C.verse.map((line, i) => {
       const p = document.createElement('p');
+      p.className = 'reveal';
+      p.style.setProperty('--d', i + 1);
       p.textContent = line;
       return p;
     }));
@@ -73,6 +76,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setText('closingNameA', C.coupleFirstName);
   setText('closingNameB', C.coupleSecondName);
+
+  // ================= countdown =================
+  // The target carries its own UTC offset, so the numbers are the time left
+  // until that one instant no matter what clock the guest's phone is set to.
+  const countdown = document.getElementById('countdown');
+  if (countdown && C.countdown) {
+    const target = new Date(C.countdown.target).getTime();
+    const label = document.getElementById('countdownLabel');
+    const row = document.getElementById('countdownRow');
+    const fields = {
+      days: document.getElementById('cdDays'),
+      hours: document.getElementById('cdHours'),
+      minutes: document.getElementById('cdMins'),
+      seconds: document.getElementById('cdSecs')
+    };
+
+    setText('countdownLabel', C.countdown.label);
+    setText('cdDaysCap', C.countdown.units.days);
+    setText('cdHoursCap', C.countdown.units.hours);
+    setText('cdMinsCap', C.countdown.units.minutes);
+    setText('cdSecsCap', C.countdown.units.seconds);
+
+    const pad = (n) => String(n).padStart(2, '0');
+    let ticker = 0;
+
+    function tick() {
+      const left = target - Date.now();
+      if (!Number.isFinite(left)) return;
+      if (left <= 0) {
+        clearInterval(ticker);
+        countdown.classList.add('done');
+        if (label) label.textContent = C.countdown.done;
+        if (row) row.hidden = true;
+        return;
+      }
+      const totalSeconds = Math.floor(left / 1000);
+      fields.days.textContent = Math.floor(totalSeconds / 86400);
+      fields.hours.textContent = pad(Math.floor(totalSeconds / 3600) % 24);
+      fields.minutes.textContent = pad(Math.floor(totalSeconds / 60) % 60);
+      fields.seconds.textContent = pad(totalSeconds % 60);
+    }
+
+    tick();
+    ticker = setInterval(tick, 1000);
+  }
 
   // ================= scroll reveal =================
   const dots = document.querySelectorAll('.dot');

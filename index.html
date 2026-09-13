@@ -48,7 +48,7 @@
   <!-- 0. VERSE -->
   <section class="panel" id="verse">
     <img class="reveal posy" src="assets/img/posy.webp" alt="" width="620" height="254">
-    <div class="reveal verse-text" style="--d:1" id="verseText"></div>
+    <div class="verse-text" id="verseText"></div>
   </section>
 
   <!-- 1. THE COUPLE + CEREMONY DATE -->
@@ -98,6 +98,16 @@
     <p class="reveal rsvp-by" style="--d:4" id="rsvpBy"></p>
     <a class="reveal rsvp-email" style="--d:4" id="rsvpEmail" href="#"></a>
     <p class="reveal rsvp-note" style="--d:5" id="rsvpNote"></p>
+
+    <div class="reveal countdown" style="--d:6" id="countdown">
+      <p class="countdown-label" id="countdownLabel"></p>
+      <div class="countdown-row" id="countdownRow">
+        <span class="cd-unit"><span class="cd-num" id="cdDays">–</span><span class="cd-cap" id="cdDaysCap"></span></span>
+        <span class="cd-unit"><span class="cd-num" id="cdHours">–</span><span class="cd-cap" id="cdHoursCap"></span></span>
+        <span class="cd-unit"><span class="cd-num" id="cdMins">–</span><span class="cd-cap" id="cdMinsCap"></span></span>
+        <span class="cd-unit"><span class="cd-num" id="cdSecs">–</span><span class="cd-cap" id="cdSecsCap"></span></span>
+      </div>
+    </div>
   </section>
 
   <!-- 5. CLOSING -->
