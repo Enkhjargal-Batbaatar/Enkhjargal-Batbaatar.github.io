@@ -34,7 +34,7 @@ const SITE_CONTENT = {
     month: "9 сар",
     weekday: "даваа",
     day: "28",
-    time: "12:00",
+    time: "9:00",
     timeLabel: "цагт",
     year: "2026",
     place: "Two souls, one story, a lifetime of love"
@@ -42,7 +42,7 @@ const SITE_CONTENT = {
 
   where: {
     title: "хаана",
-    address: ["Увс аймаг, Тэс сум", "11-р баг, Багын ам"],
+    address: ["Увс аймаг, Тэс сум", "11-р баг, Намарзан"],
     mapUrl: "https://maps.app.goo.gl/DNGjnoJYQu3cudE56",
     mapLabel: "газрын зураг дээр харах"
   },
@@ -50,7 +50,7 @@ const SITE_CONTENT = {
   // Ёслол эхлэх мөч. +07:00 нь Увс аймгийн цагийн бүс (Ховдын цаг) —
   // Улаанбаатарын цагаар (+08:00) тоолуулах бол энэ утгыг солино.
   countdown: {
-    target: "2026-09-28T12:00:00+07:00",
+    target: "2026-09-28T09:00:00+07:00",
     label: "хуримын ёслол болоход",
     units: {
       days: "хоног",
