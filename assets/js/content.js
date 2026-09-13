@@ -40,21 +40,11 @@ const SITE_CONTENT = {
     place: "Two souls, one story, a lifetime of love"
   },
 
-  details: {
-    where: {
-      title: "хаана",
-      contacts: [
-        { name: "Ц. Батбаатар", phone: "80704117" },
-        { name: "Г. Энхжаргал", phone: "80646247" }
-      ],
-      address: ["Увс аймаг, Тэс сум", "11-р баг, Багын ам"],
-      mapUrl: "https://maps.app.goo.gl/DNGjnoJYQu3cudE56",
-      mapLabel: "газрын зураг дээр харах"
-    },
-    when: {
-      title: "хэзээ",
-      lines: ["2026 оны 9 дүгээр сарын 28", "Даваа гараг · 12:00 цаг"]
-    }
+  where: {
+    title: "хаана",
+    address: ["Увс аймаг, Тэс сум", "11-р баг, Багын ам"],
+    mapUrl: "https://maps.app.goo.gl/DNGjnoJYQu3cudE56",
+    mapLabel: "газрын зураг дээр харах"
   },
 
   // Ёслол эхлэх мөч. +07:00 нь Увс аймгийн цагийн бүс (Ховдын цаг) —
@@ -65,16 +55,10 @@ const SITE_CONTENT = {
     units: {
       days: "хоног",
       hours: "цаг",
-      minutes: "минут",
-      seconds: "секунд"
+      minutes: "мин",
+      seconds: "сек"
     },
     done: "өнөөдөр бид гэрлэлээ"
-  },
-
-  rsvp: {
-    by: "2026.09.20-ны дотор",
-    email: "jaagiijaagii070@gmail.com",
-    note: ["ирэх зочдынхоо нэрсийг", "урьдчилан мэдэгдэнэ үү."]
   }
 
 };

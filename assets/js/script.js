@@ -43,36 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('dateYear', C.ceremony.year);
   setText('placeLine', C.ceremony.place);
 
-  setText('whereTitle', C.details.where.title);
-  const whereContacts = document.getElementById('whereContacts');
-  if (whereContacts) {
-    whereContacts.replaceChildren(...C.details.where.contacts.map((c) => {
-      const p = document.createElement('p');
-      p.className = 'detail-sub';
-      const a = document.createElement('a');
-      a.href = `tel:${c.phone.replace(/\s+/g, '')}`;
-      a.className = 'detail-phone-link';
-      a.textContent = c.phone;
-      p.append(`${c.name} · `, a);
-      return p;
-    }));
-  }
-  setLines('whereAddress', C.details.where.address);
+  setText('whereTitle', C.where.title);
+  setLines('whereAddress', C.where.address);
   const whereMapLink = document.getElementById('whereMapLink');
   if (whereMapLink) {
-    whereMapLink.href = C.details.where.mapUrl;
-    whereMapLink.textContent = C.details.where.mapLabel;
+    whereMapLink.href = C.where.mapUrl;
+    whereMapLink.textContent = C.where.mapLabel;
   }
-  setText('whenTitle', C.details.when.title);
-  setLines('whenLines', C.details.when.lines);
-
-  setText('rsvpBy', C.rsvp.by);
-  const rsvpEmail = document.getElementById('rsvpEmail');
-  if (rsvpEmail) {
-    rsvpEmail.textContent = C.rsvp.email;
-    rsvpEmail.href = `mailto:${C.rsvp.email}`;
-  }
-  setLines('rsvpNote', C.rsvp.note);
 
   setText('closingNameA', C.coupleFirstName);
   setText('closingNameB', C.coupleSecondName);
@@ -131,7 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) entry.target.classList.add('in-view');
     });
   }, { threshold: 0.25 });
-  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+  // The first panel sits at scroll 0, so its reveals would otherwise play out
+  // behind the intro gate and be over before the guest ever sees the page.
+  // Hold every reveal until the gate is dismissed.
+  let revealsStarted = false;
+  function startReveals() {
+    if (revealsStarted) return;
+    revealsStarted = true;
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  }
 
   const dotObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -168,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     introGate.classList.add('done');
     document.documentElement.classList.remove('gate-open');
     window.scrollTo(0, 0);
+    startReveals();
     setTimeout(() => {
       introGate.classList.add('gone');
       introVideo.pause();
@@ -199,5 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
     introVideo.addEventListener('error', closeIntro);
   } else {
     document.documentElement.classList.remove('gate-open');
+    startReveals();
   }
 });

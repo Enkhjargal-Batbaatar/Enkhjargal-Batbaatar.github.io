@@ -321,11 +321,22 @@ body{
   50%{opacity:.9;transform:translateY(0);}
 }
 
-/* ================= 2. DETAILS + RSVP ================= */
-.detail-block{margin:20px 0;width:100%;}
+/* ================= 2. VENUE ================= */
+.venue-panel{overflow:hidden;}
+.branch{
+  position:absolute;
+  height:auto;
+  opacity:.9;
+  pointer-events:none;
+}
+.branch-a{top:-2%;left:-7%;width:40%;transform:rotate(-5deg);}
+.branch-b{bottom:12%;right:-9%;width:31%;transform:rotate(5deg);}
+
+/* sits a little below centre so it clears the top branch */
+.detail-block{margin:56px 0 20px;width:100%;}
 .detail-title{
   font-family:var(--display);
-  font-size:clamp(12.5px, 3.6vw, 15px);
+  font-size:clamp(15px, 4.4vw, 19px);
   letter-spacing:.32em;
   text-indent:.32em;
   text-transform:uppercase;
@@ -336,26 +347,18 @@ body{
 .detail-title::after{
   content:'';
   display:block;
-  width:26px;
+  width:30px;
   height:1px;
   background:var(--rule);
-  margin:10px auto 14px;
+  margin:14px auto 18px;
 }
 .detail-sub{
-  font-size:clamp(14px, 4vw, 16.5px);
+  font-size:clamp(16px, 4.6vw, 19px);
   line-height:1.8;
-  letter-spacing:.05em;
+  letter-spacing:.04em;
   color:var(--ink-soft);
   margin:0;
 }
-.detail-sub + .detail-sub{margin-top:6px;}
-.detail-contacts + .detail-sub{margin-top:6px;}
-.detail-phone-link{
-  color:var(--ink-soft);
-  text-decoration:none;
-  border-bottom:1px solid var(--rule);
-}
-.detail-phone-link:hover{color:var(--deep);}
 .detail-map-link{
   display:inline-block;
   font-family:var(--display);
@@ -366,53 +369,9 @@ body{
   text-decoration:none;
   border-bottom:1px solid var(--rule);
   padding-bottom:2px;
-  margin-top:16px;
+  margin-top:18px;
 }
 .detail-map-link:hover{color:var(--deep);}
-
-.rsvp-panel{overflow:hidden;}
-.branch{
-  position:absolute;
-  height:auto;
-  opacity:.9;
-  pointer-events:none;
-}
-.branch-a{top:-2%;left:-7%;width:40%;transform:rotate(-5deg);}
-.branch-b{bottom:12%;right:-9%;width:31%;transform:rotate(5deg);}
-
-.rsvp-title{
-  display:block;
-  width:min(52%,192px);
-  height:auto;
-  margin:34px auto 0;
-}
-.rsvp-by{
-  font-size:clamp(16px, 4.4vw, 19px);
-  letter-spacing:.05em;
-  color:var(--deep);
-  margin:26px 0 0;
-}
-.rsvp-email{
-  display:inline-block;
-  font-size:clamp(13.5px, 3.8vw, 16px);
-  letter-spacing:.1em;
-  color:var(--ink-soft);
-  text-decoration:none;
-  border-bottom:1px solid var(--rule);
-  padding-bottom:2px;
-  margin:14px 0 0;
-}
-.rsvp-email:hover{color:var(--deep);}
-.rsvp-note{
-  font-family:var(--display);
-  font-size:clamp(11px, 3.2vw, 13px);
-  letter-spacing:.16em;
-  line-height:2.1;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  max-width:270px;
-  margin:42px 0 0;
-}
 
 /* ---------- countdown to the ceremony ---------- */
 .countdown{
@@ -431,14 +390,15 @@ body{
 .countdown-row{
   display:flex;
   justify-content:center;
-  align-items:flex-start;
-  gap:clamp(10px, 3.4vw, 22px);
+  align-items:stretch;
 }
 .cd-unit{
   display:flex;
   flex-direction:column;
   align-items:center;
+  padding:0 clamp(9px, 3.2vw, 20px);
 }
+.cd-unit + .cd-unit{border-left:1px solid var(--rule);}
 .cd-num{
   font-family:var(--display);
   font-size:clamp(34px, 10.5vw, 52px);

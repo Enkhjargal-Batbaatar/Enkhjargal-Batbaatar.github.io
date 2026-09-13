@@ -16,7 +16,7 @@
 <div class="progress-dots" id="progressDots">
   <span class="dot active" data-target="verse"></span>
   <span class="dot" data-target="photo"></span>
-  <span class="dot" data-target="rsvp"></span>
+  <span class="dot" data-target="venue"></span>
   <span class="dot" data-target="closing"></span>
 </div>
 
@@ -77,29 +77,18 @@
     <span class="scroll-cue" aria-hidden="true"></span>
   </section>
 
-  <!-- 3. DETAILS + RSVP -->
-  <section class="panel rsvp-panel" id="rsvp">
+  <!-- 3. VENUE + COUNTDOWN -->
+  <section class="panel venue-panel" id="venue">
     <img class="branch branch-a" src="assets/img/branch-a.webp" alt="" width="380" height="479">
     <img class="branch branch-b" src="assets/img/branch-b.webp" alt="" width="300" height="552">
 
     <div class="reveal detail-block" style="--d:1">
       <h3 class="detail-title" id="whereTitle"></h3>
-      <div class="detail-contacts" id="whereContacts"></div>
       <p class="detail-sub" id="whereAddress"></p>
       <a class="detail-map-link" id="whereMapLink" href="#" target="_blank" rel="noopener"></a>
     </div>
 
-    <div class="reveal detail-block" style="--d:2">
-      <h3 class="detail-title" id="whenTitle"></h3>
-      <p class="detail-sub" id="whenLines"></p>
-    </div>
-
-    <img class="reveal rsvp-title" style="--d:3" src="assets/img/rsvp-title.webp" alt="Please RSVP" width="460" height="499">
-    <p class="reveal rsvp-by" style="--d:4" id="rsvpBy"></p>
-    <a class="reveal rsvp-email" style="--d:4" id="rsvpEmail" href="#"></a>
-    <p class="reveal rsvp-note" style="--d:5" id="rsvpNote"></p>
-
-    <div class="reveal countdown" style="--d:6" id="countdown">
+    <div class="reveal countdown" style="--d:2" id="countdown">
       <p class="countdown-label" id="countdownLabel"></p>
       <div class="countdown-row" id="countdownRow">
         <span class="cd-unit"><span class="cd-num" id="cdDays">–</span><span class="cd-cap" id="cdDaysCap"></span></span>
