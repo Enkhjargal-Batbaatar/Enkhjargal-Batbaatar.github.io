@@ -5,6 +5,9 @@
   --ink:#7a6a5b;
   --ink-soft:#95867a;
   --deep:#5b4c41;
+  /* the intro gate's labels sit on the film's cream envelope, so they need
+     to be a shade deeper than --deep to clear the embossed shadows */
+  --gate-ink:#473b32;
   --rule:rgba(150,128,106,.42);
   --serif:'Cormorant Garamond', Georgia, serif;
   --display:'Playfair Display', 'Cormorant Garamond', serif;
@@ -144,12 +147,12 @@ body{
   font-size:12px;
   letter-spacing:2.5px;
   text-transform:uppercase;
-  color:#f6f1e7;
-  text-shadow:0 1px 6px rgba(0,0,0,0.55);
+  color:var(--gate-ink);
+  text-shadow:0 1px 2px rgba(255,255,255,0.9), 0 0 14px rgba(255,255,255,0.65);
   animation:hint-breathe 2.6s ease-in-out infinite;
 }
 @keyframes hint-breathe{
-  0%,100%{opacity:0.6;}
+  0%,100%{opacity:0.92;}
   50%{opacity:1;}
 }
 
@@ -161,13 +164,13 @@ body{
   font-size:11px;
   letter-spacing:2.5px;
   text-transform:uppercase;
-  color:#f6f1e7;
-  text-shadow:0 1px 6px rgba(0,0,0,0.55);
+  color:var(--gate-ink);
+  text-shadow:0 1px 2px rgba(255,255,255,0.9), 0 0 14px rgba(255,255,255,0.65);
   opacity:0;
   pointer-events:none;
   transition:opacity .3s ease;
 }
-.intro-gate.buffering .intro-loading{opacity:0.8;}
+.intro-gate.buffering .intro-loading{opacity:1;}
 
 .skip-hint{
   position:absolute;
@@ -181,14 +184,14 @@ body{
   font-size:11px;
   letter-spacing:1.5px;
   text-transform:uppercase;
-  color:#f6f1e7;
-  text-shadow:0 1px 6px rgba(0,0,0,0.55);
+  color:var(--gate-ink);
+  text-shadow:0 1px 2px rgba(255,255,255,0.9), 0 0 14px rgba(255,255,255,0.65);
   opacity:0;
   pointer-events:none;
   cursor:pointer;
   transition:opacity .4s ease;
 }
-.intro-gate.playing .skip-hint{opacity:0.7;pointer-events:auto;}
+.intro-gate.playing .skip-hint{opacity:0.85;pointer-events:auto;}
 .skip-hint:hover{opacity:1;}
 
 @media (prefers-reduced-motion:reduce){
