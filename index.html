@@ -28,11 +28,18 @@
     poster="assets/video/poster.jpg"
     playsinline
     webkit-playsinline
+    muted
     preload="auto"
   >
     <source src="assets/video/intro.webm" type="video/webm">
     <source src="assets/video/intro.mp4" type="video/mp4">
   </video>
+
+  <!-- the music outlives the film: it keeps playing into the page below -->
+  <audio id="introAudio" preload="auto">
+    <source src="assets/audio/music.m4a" type="audio/mp4">
+    <source src="assets/audio/music.mp3" type="audio/mpeg">
+  </audio>
 
   <button class="intro-tap-layer" id="introTap" type="button">
     <span class="tap-ring"></span>

@@ -142,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // names settle, and the gate cross-fades straight into the page below.
   const introGate = document.getElementById('introGate');
   const introVideo = document.getElementById('introVideo');
+  const introAudio = document.getElementById('introAudio');
   const introTap = document.getElementById('introTap');
   const skipHint = document.getElementById('skipHint');
 
@@ -157,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startReveals();
     setTimeout(() => {
       introGate.classList.add('gone');
-      introVideo.pause();
+      introVideo.pause();   // the music is deliberately left running
     }, 900);
   }
 
@@ -165,16 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (introOpened) return;
     introOpened = true;
     introGate.classList.add('playing', 'buffering');
-    introVideo.muted = false;
-    introVideo.volume = 1;
-    const started = introVideo.play();
-    if (started && started.catch) {
-      started.catch(() => {
-        // sound was refused (rare after a real tap) — run it silently rather than not at all
-        introVideo.muted = true;
-        introVideo.play().catch(closeIntro);
-      });
+
+    // The film itself has no audio track — the music is its own element so it
+    // can carry on playing into the page after the gate is gone.
+    if (introAudio) {
+      introAudio.volume = 1;
+      const music = introAudio.play();
+      if (music && music.catch) music.catch(() => {});
     }
+
+    const started = introVideo.play();
+    if (started && started.catch) started.catch(closeIntro);
   }
 
   if (introGate && introVideo) {
