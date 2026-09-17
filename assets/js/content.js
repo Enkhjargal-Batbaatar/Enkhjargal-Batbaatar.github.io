@@ -63,7 +63,10 @@ const SITE_CONTENT = {
       },
       { src: "assets/img/story/03.webp", alt: "Батбаатар, Энхжаргал хоёр" },
       { src: "assets/img/story/04.webp", alt: "Батбаатар, Энхжаргал хоёр" },
-      { src: "assets/img/story/05.webp", alt: "Батбаатар, Энхжаргал хоёр" }
+      { src: "assets/img/story/05.webp", alt: "Батбаатар, Энхжаргал хоёр" },
+      { src: "assets/img/story/06.webp", alt: "Батбаатар, Энхжаргал хоёр" },
+      { src: "assets/img/story/07.webp", alt: "Батбаатар, Энхжаргал хоёр" },
+      { src: "assets/img/story/08.webp", alt: "Батбаатар, Энхжаргал хоёр" }
     ]
   },
 
