@@ -43,6 +43,124 @@ document.addEventListener('DOMContentLoaded', () => {
   setText('dateYear', C.ceremony.year);
   setText('placeLine', C.ceremony.place);
 
+  // ---- love story: a deck of photos the guest flicks sideways ----
+  // Only worth a panel if there are cards. With none, the panel and its dot
+  // come out before the observers below ever see them.
+  const lovePanel = document.getElementById('love');
+  const loveDeck = document.getElementById('loveDeck');
+  const loveDotRow = document.getElementById('loveDots');
+  const loveCards = (C.loveStory && C.loveStory.cards) || [];
+
+  if (lovePanel && loveDeck && loveDotRow && loveCards.length) {
+    setText('loveTitle', C.loveStory.title);
+
+    const namesEl = document.getElementById('loveNames');
+    if (namesEl) {
+      const heart = document.createElement('span');
+      heart.className = 'love-heart';
+      heart.textContent = '\u2665';
+      namesEl.replaceChildren(
+        document.createTextNode(C.coupleFirstName),
+        heart,
+        document.createTextNode(C.coupleSecondName)
+      );
+    }
+
+    const cards = loveCards.map((card, i) => {
+      const fig = document.createElement('figure');
+      fig.className = 'love-card';
+      const img = document.createElement('img');
+      img.src = card.src;
+      img.alt = card.alt || '';
+      // the two either side of the opening card are already half on screen
+      img.loading = i < 3 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      fig.appendChild(img);
+      if (card.quote) {
+        const cap = document.createElement('figcaption');
+        cap.className = 'love-quote';
+        cap.textContent = card.quote;
+        fig.appendChild(cap);
+      }
+      return fig;
+    });
+    loveDeck.replaceChildren(...cards);
+
+    const loveDots = loveCards.map((_, i) => {
+      const d = document.createElement('span');
+      d.addEventListener('click', () => go(i));
+      return d;
+    });
+    loveDotRow.replaceChildren(...loveDots);
+
+    let active = 0;
+
+    // Each card is placed by how far it sits from the one in focus: the
+    // neighbours turn away and shrink, anything past the second is gone.
+    const STEPS = [
+      { x: 0,   s: 1,    r: 0,   o: 1,   z: 30 },
+      { x: 58,  s: 0.84, r: -16, o: 0.9, z: 20 },
+      { x: 100, s: 0.70, r: -22, o: 0.5, z: 10 },
+      { x: 130, s: 0.62, r: -26, o: 0,   z: 0  }
+    ];
+
+    function layout() {
+      cards.forEach((card, i) => {
+        const offset = i - active;
+        const dist = Math.min(Math.abs(offset), 3);
+        const dir = Math.sign(offset);
+        const step = STEPS[dist];
+        card.style.setProperty('--x', (step.x * dir) + '%');
+        card.style.setProperty('--s', step.s);
+        card.style.setProperty('--r', (step.r * dir) + 'deg');
+        card.style.opacity = step.o;
+        card.style.zIndex = step.z;
+        card.style.pointerEvents = dist >= 3 ? 'none' : 'auto';
+        card.setAttribute('aria-hidden', dist >= 3 ? 'true' : 'false');
+      });
+      loveDots.forEach((d, i) => d.classList.toggle('on', i === active));
+    }
+
+    function go(i) {
+      const next = Math.max(0, Math.min(cards.length - 1, i));
+      if (next === active) return;
+      active = next;
+      layout();
+    }
+
+    // one pointer gesture covers both jobs: a drag turns the deck, a tap
+    // brings whichever card was tapped into focus
+    let downX = null, downY = null;
+    loveDeck.addEventListener('pointerdown', (e) => {
+      downX = e.clientX;
+      downY = e.clientY;
+    });
+    loveDeck.addEventListener('pointerup', (e) => {
+      if (downX === null) return;
+      const dx = e.clientX - downX;
+      const dy = e.clientY - downY;
+      downX = null;
+      if (Math.abs(dx) > 34 && Math.abs(dx) > Math.abs(dy)) {
+        go(active + (dx < 0 ? 1 : -1));
+        return;
+      }
+      const tapped = cards.indexOf(e.target.closest('.love-card'));
+      if (tapped > -1) go(tapped);
+    });
+    loveDeck.addEventListener('pointercancel', () => { downX = null; });
+    loveDeck.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { go(active - 1); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { go(active + 1); e.preventDefault(); }
+    });
+
+    layout();
+    lovePanel.hidden = false;
+  } else if (lovePanel) {
+    lovePanel.remove();
+    const loveDot = document.querySelector('.dot[data-target="love"]');
+    if (loveDot) loveDot.remove();
+  }
+
   setText('whereTitle', C.where.title);
   setLines('whereAddress', C.where.address);
   const whereMapLink = document.getElementById('whereMapLink');

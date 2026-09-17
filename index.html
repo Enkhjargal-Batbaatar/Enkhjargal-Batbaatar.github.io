@@ -34,6 +34,7 @@
 <div class="progress-dots" id="progressDots">
   <span class="dot active" data-target="verse"></span>
   <span class="dot" data-target="photo"></span>
+  <span class="dot" data-target="love"></span>
   <span class="dot" data-target="venue"></span>
   <span class="dot" data-target="closing"></span>
 </div>
@@ -100,6 +101,16 @@
     <p class="reveal place-line" style="--d:3" id="placeLine"></p>
 
     <span class="scroll-cue" aria-hidden="true"></span>
+  </section>
+
+  <!-- 2. OUR LOVE STORY (photo deck) -->
+  <!-- hidden until content.js carries cards; script.js drops the panel and
+       its dot entirely when the list is empty -->
+  <section class="panel love-panel" id="love" hidden>
+    <h2 class="reveal love-title" id="loveTitle"></h2>
+    <p class="reveal love-names" id="loveNames"></p>
+    <div class="reveal love-deck" style="--d:1" id="loveDeck" tabindex="0" role="group" aria-roledescription="carousel"></div>
+    <div class="reveal love-dots" style="--d:2" id="loveDots"></div>
   </section>
 
   <!-- 3. VENUE + COUNTDOWN -->
